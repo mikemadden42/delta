@@ -6,8 +6,8 @@
 // g++ -Wall -O2 -mtune=native -o delta delta.cc -lboost_date_time
 // clang++ -Wall -O2 -mtune=native -o delta delta.cc -lboost_date_time
 
+#include <boost/date_time/gregorian/gregorian.hpp>
 #include <iostream>
-#include "boost/date_time/gregorian/gregorian.hpp"
 
 int main() {
   using namespace boost::gregorian;
