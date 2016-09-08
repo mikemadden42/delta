@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(delta CXX)
 
-add_definitions(-Wall -O2 -std=c++11 -march=native)
+add_definitions(-Wall -O2 -std=c++14 -march=native)
 
 # https://cmake.org/cmake/help/v3.0/module/FindBoost.html
 find_package(Boost COMPONENTS date_time)
