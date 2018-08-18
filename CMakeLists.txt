@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 2.8)
 project(delta CXX)
 
 set (CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -march=native")
+if (NOT CMAKE)
+  set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -march=native")
+endif()
 
 # https://cmake.org/cmake/help/v3.0/module/FindBoost.html
 find_package(Boost COMPONENTS date_time)
