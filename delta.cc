@@ -11,7 +11,7 @@ int diffDays(std::string s1, std::string s2) {
 }
 
 int main() {
-    std::string s1 = "2016-03-30";
+    std::string s1 = "2019-04-08";
     std::string s2 = to_simple_string(day_clock::local_day());
     std::cout << "diff: " << diffDays(s1, s2) << " days" << std::endl;
     return 0;
