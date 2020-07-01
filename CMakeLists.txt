@@ -8,6 +8,7 @@ if (NOT MSVC)
 endif()
 
 # https://cmake.org/cmake/help/v3.0/module/FindBoost.html
+# https://stackoverflow.com/questions/6646405/how-do-you-add-boost-libraries-in-cmakelists-txt
 find_package(Boost COMPONENTS date_time)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
