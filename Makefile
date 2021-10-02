@@ -1,7 +1,7 @@
 PROGRAMS = delta 
 
 CC = c++
-CFLAGS=-Wall -O2 -std=c++11 -march=native
+CFLAGS=-Wall -O2 -std=c++11
 LIBS=-lboost_date_time
 
 all: $(PROGRAMS)
