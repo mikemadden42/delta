@@ -1,4 +1,7 @@
 # delta
+
+[![CI](https://github.com/mikemadden42/delta/actions/workflows/ci.yml/badge.svg)](https://github.com/mikemadden42/delta/actions/workflows/ci.yml)
+
 Find the difference between various dates
 
 ## Build

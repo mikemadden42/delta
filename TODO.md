@@ -12,8 +12,8 @@
 - [x] Ignore the in-tree `delta` binary.
 - [x] Add a usage example to the README.
 - [x] Add tests for `parseDate` and `diffDays` (`make test` or `ctest`).
+- [x] Add CI: GitHub Actions builds with warnings as errors and runs the tests (GCC and Clang on Ubuntu, Apple clang on macOS, plus the Makefile).
 
 ## Remaining
 
-- [ ] Add CI (build and run tests with GCC and Clang).
 - [ ] Windows support: `localtime_r` is POSIX; MSVC needs `localtime_s`.
