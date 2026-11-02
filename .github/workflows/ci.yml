@@ -24,11 +24,25 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Configure
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-Werror
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
       - name: Build
         run: cmake --build build
       - name: Test
         run: ctest --test-dir build --output-on-failure
+
+  windows:
+    name: CMake (windows-latest, MSVC)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
+      # Visual Studio is a multi-config generator, so the build type is
+      # chosen at build and test time rather than at configure time.
+      - name: Build
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
 
   make:
     name: Make (ubuntu-latest, g++)

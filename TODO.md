@@ -13,7 +13,4 @@
 - [x] Add a usage example to the README.
 - [x] Add tests for `parseDate` and `diffDays` (`make test` or `ctest`).
 - [x] Add CI: GitHub Actions builds with warnings as errors and runs the tests (GCC and Clang on Ubuntu, Apple clang on macOS, plus the Makefile).
-
-## Remaining
-
-- [ ] Windows support: `localtime_r` is POSIX; MSVC needs `localtime_s`.
+- [x] Windows support: use `localtime_s` on Windows, MSVC warning flags, and an MSVC job in CI.

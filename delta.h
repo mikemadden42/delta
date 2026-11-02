@@ -35,7 +35,11 @@ inline std::chrono::year_month_day today() {
     using namespace std::chrono;
     std::time_t t = std::time(nullptr);
     std::tm tm{};
+#ifdef _WIN32
+    localtime_s(&tm, &t);  // Microsoft's argument order is the reverse of localtime_r.
+#else
     localtime_r(&t, &tm);
+#endif
     return year{tm.tm_year + 1900} / (tm.tm_mon + 1) / tm.tm_mday;
 }
 
