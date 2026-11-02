@@ -2,7 +2,7 @@ PROGRAMS = delta
 TESTS = delta_test
 
 CXXFLAGS ?= -Wall -Wextra -pedantic -O2
-CXXFLAGS += -std=c++20
+override CXXFLAGS += -std=c++20
 
 .PHONY: all test clean
 
