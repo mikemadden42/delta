@@ -14,10 +14,11 @@ inline std::optional<std::chrono::year_month_day> parseDate(std::string_view s) 
         return std::nullopt;
     }
     auto field = [&](size_t pos, size_t len, auto& out) {
-        const char* first = s.data() + pos;
-        const char* last = first + len;
-        auto [ptr, ec] = std::from_chars(first, last, out);
-        return ec == std::errc{} && ptr == last;
+        // Avoid the name `last`, which would hide std::chrono::last (MSVC C4459).
+        const char* begin = s.data() + pos;
+        const char* end = begin + len;
+        auto [ptr, ec] = std::from_chars(begin, end, out);
+        return ec == std::errc{} && ptr == end;
     };
     int y;
     unsigned m, d;
