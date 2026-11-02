@@ -1,13 +1,15 @@
 PROGRAMS = delta
 
-CC = c++
-CFLAGS=-Wall -O2 -std=c++17
-LIBS=-lboost_date_time
+CXXFLAGS ?= -Wall -Wextra -pedantic -O2
+CXXFLAGS += -std=c++20
+
+.PHONY: all clean
 
 all: $(PROGRAMS)
 
-.cc: ; $(CC) $(CFLAGS) $@.cc $(LIBS) -o $@
+%: %.cc
+	$(CXX) $(CXXFLAGS) $< -o $@
 	strip $@
 
 clean:
-	rm $(PROGRAMS)
+	rm -f $(PROGRAMS)

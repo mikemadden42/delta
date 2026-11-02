@@ -2,17 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 
 project(delta CXX)
 
-set (CMAKE_CXX_STANDARD 17)
-if (NOT MSVC)
-  set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic")
-endif()
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# https://cmake.org/cmake/help/v3.0/module/FindBoost.html
-# https://stackoverflow.com/questions/6646405/how-do-you-add-boost-libraries-in-cmakelists-txt
-find_package(Boost COMPONENTS date_time)
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    link_directories(${Boost_LIBRARY_DIRS})
-    add_executable(delta delta.cc)
-    target_link_libraries(delta ${Boost_LIBRARIES})
+add_executable(delta delta.cc)
+if (NOT MSVC)
+  target_compile_options(delta PRIVATE -Wall -Wextra -pedantic)
 endif()
