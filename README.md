@@ -11,6 +11,8 @@ make
 cmake -S . -B build && cmake --build build
 ```
 
+Run the tests with `make test`, or `ctest --test-dir build` after a CMake build.
+
 ## Usage
 
 ```sh
