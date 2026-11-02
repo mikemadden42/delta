@@ -6,7 +6,8 @@ Find the difference between various dates
 
 ## Build
 
-Requires a C++20 compiler (GCC 11+ or a recent Clang). No other dependencies.
+Requires a C++20 compiler (GCC 11+, a recent Clang, or MSVC 2019 16.10+). No other dependencies.
+Builds on Linux, macOS, and Windows.
 
 ```sh
 make
@@ -14,7 +15,10 @@ make
 cmake -S . -B build && cmake --build build
 ```
 
-Run the tests with `make test`, or `ctest --test-dir build` after a CMake build.
+On Windows, use CMake (the Makefile assumes a Unix-like environment).
+
+Run the tests with `make test`, or `ctest --test-dir build` after a CMake build
+(add `-C Release` or `-C Debug` with multi-config generators such as Visual Studio).
 
 ## Usage
 
