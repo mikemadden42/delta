@@ -11,9 +11,9 @@
 - [x] Makefile: use `CXX`/`CXXFLAGS`, match the CMake warnings, `rm -f` in `clean`, mark targets `.PHONY`.
 - [x] Ignore the in-tree `delta` binary.
 - [x] Add a usage example to the README.
+- [x] Add tests for `parseDate` and `diffDays` (`make test` or `ctest`).
 
 ## Remaining
 
-- [ ] Add a small test of `diffDays` and `parseDate` against known dates (including leap years and invalid dates).
-- [ ] Add CI (build with GCC and Clang).
+- [ ] Add CI (build and run tests with GCC and Clang).
 - [ ] Windows support: `localtime_r` is POSIX; MSVC needs `localtime_s`.

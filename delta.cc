@@ -1,47 +1,7 @@
-#include <charconv>
-#include <chrono>
 #include <cstdlib>
-#include <ctime>
 #include <iostream>
-#include <optional>
-#include <string_view>
 
-using namespace std::chrono;
-
-// Parses an ISO 8601 date (YYYY-MM-DD), rejecting malformed or impossible dates.
-std::optional<year_month_day> parseDate(std::string_view s) {
-    if (s.size() != 10 || s[4] != '-' || s[7] != '-') {
-        return std::nullopt;
-    }
-    auto field = [&](size_t pos, size_t len, auto& out) {
-        const char* first = s.data() + pos;
-        const char* last = first + len;
-        auto [ptr, ec] = std::from_chars(first, last, out);
-        return ec == std::errc{} && ptr == last;
-    };
-    int y;
-    unsigned m, d;
-    if (!field(0, 4, y) || !field(5, 2, m) || !field(8, 2, d)) {
-        return std::nullopt;
-    }
-    year_month_day ymd{year{y}, month{m}, day{d}};
-    if (!ymd.ok()) {
-        return std::nullopt;
-    }
-    return ymd;
-}
-
-year_month_day today() {
-    std::time_t t = std::time(nullptr);
-    std::tm tm{};
-    localtime_r(&t, &tm);
-    return year{tm.tm_year + 1900} / (tm.tm_mon + 1) / tm.tm_mday;
-}
-
-// Returns the number of days from `from` to `to` (negative if `to` is earlier).
-long diffDays(year_month_day from, year_month_day to) {
-    return (sys_days{to} - sys_days{from}).count();
-}
+#include "delta.h"
 
 int usage(const char* prog) {
     std::cerr << "usage: " << prog << " <date> [date]\n"
